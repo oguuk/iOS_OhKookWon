@@ -9,30 +9,32 @@ import UIKit
 
 class SearchCell:UITableViewCell {
     //MARK: - Properties
+    private let apicall = WebService()
+    
     private let moviePoster: UIImageView = {
         let poster = UIImageView()
+        poster.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        poster.heightAnchor.constraint(equalToConstant: 120).isActive = true
         return poster
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 26)
+        label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()
     
     private let yearLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "2022.03.22"
+        label.font = UIFont.systemFont(ofSize: 15)
         label.alpha = 0.75
         return label
     }()
     
     private let typeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
-        label.text = "Thrill"
 
         return label
     }()
@@ -48,9 +50,13 @@ class SearchCell:UITableViewCell {
         stack.distribution = .fillProportionally
         stack.spacing = 1
         
-        addSubview(stack)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.centerYAnchor.constraint(equalTo: stack.centerYAnchor).isActive = true
+        let queue = UIStackView(arrangedSubviews: [moviePoster,stack])
+        queue.axis = .horizontal
+        queue.spacing = 0
+        
+        addSubview(queue)
+        queue.translatesAutoresizingMaskIntoConstraints = false
+        queue.centerYAnchor.constraint(equalTo: stack.centerYAnchor).isActive = true
         
     }
     
@@ -61,6 +67,14 @@ class SearchCell:UITableViewCell {
     //MARK: -Cell configure
     
     func configureCell(with info: JSON.Search.Movie) {
+        apicall.getImage(url: info.poster) { data, error in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.moviePoster.image = UIImage(data: data)
+                    
+                }
+            }
+        }
         titleLabel.text = info.title
         yearLabel.text = info.year
         typeLabel.text = info.type

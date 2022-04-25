@@ -9,6 +9,7 @@ import Foundation
 
 struct JSON {
     struct Search: Codable {
+        
         let results: [Movie]?
         let totalResults: String?
         let response: String
@@ -39,9 +40,6 @@ struct JSON {
     
 }
 
-struct MMovie {
-    let ss:String
-}
 /*
 {
 "Search": [
