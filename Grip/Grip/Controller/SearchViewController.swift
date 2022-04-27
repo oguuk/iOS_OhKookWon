@@ -28,7 +28,9 @@ class SearchViewController: UIViewController {
         configure()
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     //MARK: -configure
     func configure() {
@@ -87,8 +89,6 @@ extension SearchViewController: UISearchBarDelegate {
                         }
                     }
                 }
-                
-                
             } else {
                 self.totalPage = 0
                 self.nextPage = 1
@@ -142,19 +142,18 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SearchCell
-        cell.configureCell(with: movies[indexPath.row])
+        if FavoriteViewController.favoriteMovieForDeduplication.contains(movies[indexPath.row]) {
+            cell.configureCell(with: movies[indexPath.row],image: "star.fill")
+        } else {
+            cell.configureCell(with: movies[indexPath.row])
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        FavoriteViewController.favoriteMovieForDeduplication.insert(["title" : movies[indexPath.row].title,
-        //                                                    "year":movies[indexPath.row].year,
-        //                                                    "imdbID":movies[indexPath.row].imdbID,
-        //                                                    "type":movies[indexPath.row].type,
-        //                                                    "poster":movies[indexPath.row].poster])
         FavoriteViewController.favoriteMovieForDeduplication.insert(movies[indexPath.row])
+        tableView.reloadData()
     }
-    
 }
 
 //MARK: - UIScrollView

@@ -60,7 +60,7 @@ extension FavoriteViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SearchCell
-        cell.configureCell(with: FavoriteViewController.movies[indexPath.row])
+        cell.configureCell(with: FavoriteViewController.movies[indexPath.row],image: "star.fill")
         return cell
     }
     
@@ -82,5 +82,4 @@ extension FavoriteViewController: UITableViewDelegate,UITableViewDataSource {
         
         present(alert, animated: true, completion: nil)
     }
-    
 }
