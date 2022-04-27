@@ -63,7 +63,6 @@ class FavoriteViewController: UIViewController {
 //MARK: -Table
 extension FavoriteViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("aa")
         return FavoriteViewController.movies.count
     }
     
@@ -77,6 +76,24 @@ extension FavoriteViewController: UITableViewDelegate,UITableViewDataSource {
 //        }
         return cell
     }
+    
+
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: "", message: "즐겨찾기를 삭제하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "삭제", style: .default) { action in
+            FavoriteViewController.movies.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .default) { action in
+            
+        }
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: false, completion: nil)
+    }
+    
+
     
     
 }

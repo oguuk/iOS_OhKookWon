@@ -47,12 +47,11 @@ class SearchCell:UITableViewCell {
         selectionStyle = .none
         let stack = UIStackView(arrangedSubviews: [titleLabel, yearLabel, typeLabel])
         stack.axis = .vertical
-        stack.distribution = .fillProportionally
-        stack.spacing = 1
+        stack.distribution = .fillEqually
+        stack.spacing = 0
         
         let queue = UIStackView(arrangedSubviews: [moviePoster,stack])
         queue.axis = .horizontal
-        queue.spacing = 0
         
         addSubview(queue)
         queue.translatesAutoresizingMaskIntoConstraints = false
