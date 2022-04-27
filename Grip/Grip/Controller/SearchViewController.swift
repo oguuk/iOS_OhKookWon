@@ -147,12 +147,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        FavoriteViewController.favoriteMovieForDeduplication.insert(["title" : movies[indexPath.row].title,
-//                                                    "year":movies[indexPath.row].year,
-//                                                    "imdbID":movies[indexPath.row].imdbID,
-//                                                    "type":movies[indexPath.row].type,
-//                                                    "poster":movies[indexPath.row].poster])
-        FavoriteViewController.movies.append(movies[indexPath.row])
+        //        FavoriteViewController.favoriteMovieForDeduplication.insert(["title" : movies[indexPath.row].title,
+        //                                                    "year":movies[indexPath.row].year,
+        //                                                    "imdbID":movies[indexPath.row].imdbID,
+        //                                                    "type":movies[indexPath.row].type,
+        //                                                    "poster":movies[indexPath.row].poster])
+        FavoriteViewController.favoriteMovieForDeduplication.insert(movies[indexPath.row])
     }
     
 }
@@ -178,7 +178,7 @@ extension SearchViewController {
 //            guard searchTerm.count > 2 else { return }
 //            self.movieName = searchTerm
 //            apiCall.getMovies(name: movieName) { movie in
-//               batma if let movie = movie {
+//                if let movie = movie {
 //                    if let totalResults = movie.totalResults {
 //                        self.totalPage = Int(totalResults)!
 //                        self.movies = movie.results!

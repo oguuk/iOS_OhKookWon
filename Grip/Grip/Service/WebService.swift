@@ -12,8 +12,8 @@ class WebService {
     private let cache = NSCache<NSString, NSData>()
     
     func getMovies(name:String,page:Int = 1,completion: @escaping (JSON.Search?) -> Void) {
-
-    guard let url = URL(string: "http://www.omdbapi.com/?apikey=92e32667&s=\(name)&page=\(page)") else { return }
+        
+        guard let url = URL(string: "http://www.omdbapi.com/?apikey=92e32667&s=\(name)&page=\(page)") else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 completion(nil)
@@ -22,7 +22,7 @@ class WebService {
             let movies = try? JSONDecoder().decode(JSON.Search.self, from: data)
             movies == nil ? completion(nil) : completion(movies)
         }.resume()
-    
+        
     }
     
     func getImage(url:String, completion: @escaping(Data?, Error?) -> Void) {

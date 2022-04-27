@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		344896C0281675FF0066A50B /* Array_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344896BF281675FF0066A50B /* Array_Extension.swift */; };
 		3462010628123D8A00673F97 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3462010528123D8A00673F97 /* SearchCell.swift */; };
 		3462010C28128B5900673F97 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3462010B28128B5900673F97 /* WebService.swift */; };
 		3462010F28128C8100673F97 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3462010E28128C8100673F97 /* Movie.swift */; };
@@ -25,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		344896BF281675FF0066A50B /* Array_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array_Extension.swift; sourceTree = "<group>"; };
 		3462010528123D8A00673F97 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		3462010B28128B5900673F97 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		3462010E28128C8100673F97 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				346201172814FDC300673F97 /* UITableView_Extension.swift */,
-				344896BF281675FF0066A50B /* Array_Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -227,7 +224,6 @@
 				346201182814FDC300673F97 /* UITableView_Extension.swift in Sources */,
 				34E9D76C2811764600D393C4 /* TabBarViewController.swift in Sources */,
 				34E9D757281175AD00D393C4 /* SceneDelegate.swift in Sources */,
-				344896C0281675FF0066A50B /* Array_Extension.swift in Sources */,
 				3462010628123D8A00673F97 /* SearchCell.swift in Sources */,
 				3462011A2815BD8A00673F97 /* ScrollDirection.swift in Sources */,
 				34E9D76E281178E000D393C4 /* FavoriteViewController.swift in Sources */,

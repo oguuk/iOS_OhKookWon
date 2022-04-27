@@ -35,7 +35,7 @@ class SearchCell:UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
-
+        
         return label
     }()
     

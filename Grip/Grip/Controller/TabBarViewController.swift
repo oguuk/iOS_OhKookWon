@@ -12,7 +12,7 @@ class TabBarViewController:UITabBarController {
     //MARK: -Properties
     let searchVC = UINavigationController(rootViewController: SearchViewController())
     let favoriteVC = UINavigationController(rootViewController: FavoriteViewController())
-
+    
     //MARK: -Lifecycle
     override func viewDidLoad() {
         super .viewDidLoad()

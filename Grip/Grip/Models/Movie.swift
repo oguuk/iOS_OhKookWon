@@ -20,7 +20,7 @@ struct JSON {
             case response = "Response"
         }
         
-        struct Movie: Codable {
+        struct Movie: Codable,Hashable {
             let title: String
             let year: String
             let imdbID: String
