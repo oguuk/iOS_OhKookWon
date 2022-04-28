@@ -51,6 +51,7 @@ class SearchViewController: UIViewController {
         tableView.register(SearchCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 120
+        tableView.separatorStyle = .none
         
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         view.addSubview(tableView)
@@ -143,6 +144,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SearchCell
+        
         if FavoriteViewController.movies.contains(movies[indexPath.row]) {
             cell.configureCell(with: movies[indexPath.row],image: "bookmark.fill")
         } else {
@@ -185,7 +187,7 @@ extension SearchViewController {
 }
 
 
-////MARK: - UISearchResultsUpdatting
+////MARK: - UISearchResultsUpdating
 //extension SearchViewController: UISearchResultsUpdating {
 //    func updateSearchResults(for searchController: UISearchController) {
 //        print("movie")

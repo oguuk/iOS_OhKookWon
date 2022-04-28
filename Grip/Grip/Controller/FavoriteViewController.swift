@@ -4,7 +4,6 @@
 //
 //  Created by 오국원 on 2022/04/21.
 //
-
 import UIKit
 
 private let reuseIdentifier = "SearchCell"
@@ -39,6 +38,8 @@ class FavoriteViewController: UIViewController {
         tableView.register(SearchCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 120
+        tableView.separatorStyle = .none
+
         
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         view.addSubview(tableView)
@@ -63,6 +64,8 @@ extension FavoriteViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SearchCell
+        cell.separatorInset = UIEdgeInsets.zero
+        
         cell.configureCell(with: FavoriteViewController.movies[indexPath.row],image: "")
         return cell
     }

@@ -48,26 +48,27 @@ class SearchCell:UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        
+                
         let stack = UIStackView(arrangedSubviews: [titleLabel, yearLabel, typeLabel])
         stack.axis = .vertical
         stack.distribution = .fill
         
         addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60).isActive = true
+        stack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 67).isActive = true
         stack.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         addSubview(moviePoster)
         moviePoster.translatesAutoresizingMaskIntoConstraints = false
-        moviePoster.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        moviePoster.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        moviePoster.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 6).isActive = true
         moviePoster.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        moviePoster.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        moviePoster.heightAnchor.constraint(equalToConstant: 103).isActive = true
         
         addSubview(isInclude)
         isInclude.translatesAutoresizingMaskIntoConstraints = false
-        isInclude.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-        isInclude.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
+        isInclude.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
+        isInclude.topAnchor.constraint(equalTo: self.topAnchor, constant: 9).isActive = true
         
     }
     
@@ -95,6 +96,11 @@ class SearchCell:UITableViewCell {
 
 extension SearchCell {
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5))
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -103,7 +109,7 @@ extension SearchCell {
             contentView.layer.borderColor = UIColor.blue.cgColor
         } else {
             contentView.layer.borderWidth = 1
-            contentView.layer.borderColor = UIColor.lightGray.cgColor
+            contentView.layer.borderColor = UIColor.black.cgColor
         }
     }
 }
