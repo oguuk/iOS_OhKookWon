@@ -111,20 +111,21 @@ extension SearchViewController: UISearchBarDelegate {
                         self.tableView.reloadData()
                     }
                 } else {
-                    DispatchQueue.main.async {
-                        self.movies.removeAll()
-                        self.tableView.showHelpLabel(tableView: self.tableView, withText: "검색 결과가 없습니다.")
-                        self.tableView.reloadData()
-                    }
+                    self.dispatchQueueRemoveAllAndReloadData()
                 }
                 
             } else {
-                DispatchQueue.main.async {
-                    self.movies.removeAll()
-                    self.tableView.showHelpLabel(tableView: self.tableView, withText: "검색 결과가 없습니다.")
-                    self.tableView.reloadData()
-                }
+                self.dispatchQueueRemoveAllAndReloadData()
             }
+        }
+    }
+    
+    //MARK: -Helper Function
+    func dispatchQueueRemoveAllAndReloadData() {
+        DispatchQueue.main.async {
+            self.movies.removeAll()
+            self.tableView.showHelpLabel(tableView: self.tableView, withText: "검색 결과가 없습니다.")
+            self.tableView.reloadData()
         }
     }
 }
@@ -142,8 +143,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SearchCell
-        if FavoriteViewController.favoriteMovieForDeduplication.contains(movies[indexPath.row]) {
-            cell.configureCell(with: movies[indexPath.row],image: "star.fill")
+        if FavoriteViewController.movies.contains(movies[indexPath.row]) {
+            cell.configureCell(with: movies[indexPath.row],image: "bookmark.fill")
         } else {
             cell.configureCell(with: movies[indexPath.row])
         }
@@ -151,13 +152,28 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        FavoriteViewController.favoriteMovieForDeduplication.insert(movies[indexPath.row])
-        tableView.reloadData()
+        let cell = tableView.cellForRow(at: indexPath) as? SearchCell
+        
+        if FavoriteViewController.movies.contains(movies[indexPath.row]) {
+            
+            cellClickedAndAlert("삭제하시겠습니까?", indexPath.row, action:{
+                FavoriteViewController.movies.remove(at: indexPath.row)
+                cell!.configureCell(with: self.movies[indexPath.row],image: "bookmark")
+                tableView.reloadData()
+            })
+            
+        } else {
+            
+            cellClickedAndAlert("추가하시겠습니까?", indexPath.row, action:{
+                FavoriteViewController.movies.append(self.movies[indexPath.row])
+                cell!.configureCell(with: self.movies[indexPath.row],image: "bookmark.fill")
+                tableView.reloadData()
+            })
+        }
     }
 }
 
 //MARK: - UIScrollView
-
 extension SearchViewController {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if velocity.y >= 0 {
@@ -172,7 +188,7 @@ extension SearchViewController {
 ////MARK: - UISearchResultsUpdatting
 //extension SearchViewController: UISearchResultsUpdating {
 //    func updateSearchResults(for searchController: UISearchController) {
-//        print("searchTerm")
+//        print("movie")
 //        if let searchTerm = searchBar.searchBar.text {
 //            guard searchTerm.count > 2 else { return }
 //            self.movieName = searchTerm

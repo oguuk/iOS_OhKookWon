@@ -21,3 +21,20 @@ extension UITableView {
         return tableView
     }
 }
+
+extension UIViewController {
+    func cellClickedAndAlert(_ message:String, _ indexPath:Int, action: @escaping () -> Void){
+        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        let okAction = UIAlertAction(title: "확인", style: .default) { _ in
+            action()
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .default)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+}

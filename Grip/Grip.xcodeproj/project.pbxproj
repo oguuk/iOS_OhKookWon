@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		344896C62819596F0066A50B /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344896C52819596F0066A50B /* UIView_Extension.swift */; };
 		3462010628123D8A00673F97 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3462010528123D8A00673F97 /* SearchCell.swift */; };
 		3462010C28128B5900673F97 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3462010B28128B5900673F97 /* WebService.swift */; };
 		3462010F28128C8100673F97 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3462010E28128C8100673F97 /* Movie.swift */; };
-		346201182814FDC300673F97 /* UITableView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346201172814FDC300673F97 /* UITableView_Extension.swift */; };
+		346201182814FDC300673F97 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346201172814FDC300673F97 /* Extension.swift */; };
 		3462011A2815BD8A00673F97 /* ScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346201192815BD8A00673F97 /* ScrollDirection.swift */; };
 		34E9D755281175AD00D393C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9D754281175AD00D393C4 /* AppDelegate.swift */; };
 		34E9D757281175AD00D393C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9D756281175AD00D393C4 /* SceneDelegate.swift */; };
@@ -21,15 +20,14 @@
 		34E9D76C2811764600D393C4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9D76B2811764600D393C4 /* TabBarViewController.swift */; };
 		34E9D76E281178E000D393C4 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9D76D281178E000D393C4 /* FavoriteViewController.swift */; };
 		34E9D770281179C700D393C4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9D76F281179C700D393C4 /* SearchViewController.swift */; };
-		34E9D77428118EA300D393C4 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9D77328118EA300D393C4 /* testViewController.swift */; };
+		34E9D77428118EA300D393C4 /* testClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9D77328118EA300D393C4 /* testClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		344896C52819596F0066A50B /* UIView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		3462010528123D8A00673F97 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		3462010B28128B5900673F97 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		3462010E28128C8100673F97 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		346201172814FDC300673F97 /* UITableView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Extension.swift; sourceTree = "<group>"; };
+		346201172814FDC300673F97 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		346201192815BD8A00673F97 /* ScrollDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollDirection.swift; sourceTree = "<group>"; };
 		34E9D751281175AD00D393C4 /* Grip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E9D754281175AD00D393C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +39,7 @@
 		34E9D76B2811764600D393C4 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		34E9D76D281178E000D393C4 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		34E9D76F281179C700D393C4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		34E9D77328118EA300D393C4 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
+		34E9D77328118EA300D393C4 /* testClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,13 +80,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		346201122814FB7300673F97 /* Extension */ = {
+		346201122814FB7300673F97 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				346201172814FDC300673F97 /* UITableView_Extension.swift */,
-				344896C52819596F0066A50B /* UIView_Extension.swift */,
+				346201172814FDC300673F97 /* Extension.swift */,
 			);
-			path = Extension;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		34E9D748281175AD00D393C4 = {
@@ -110,7 +107,7 @@
 		34E9D753281175AD00D393C4 /* Grip */ = {
 			isa = PBXGroup;
 			children = (
-				346201122814FB7300673F97 /* Extension */,
+				346201122814FB7300673F97 /* Utils */,
 				3462010D28128C6A00673F97 /* Models */,
 				34E9D7692811762E00D393C4 /* View */,
 				34E9D7682811762500D393C4 /* Service */,
@@ -145,7 +142,7 @@
 				34E9D76B2811764600D393C4 /* TabBarViewController.swift */,
 				34E9D76D281178E000D393C4 /* FavoriteViewController.swift */,
 				34E9D76F281179C700D393C4 /* SearchViewController.swift */,
-				34E9D77328118EA300D393C4 /* testViewController.swift */,
+				34E9D77328118EA300D393C4 /* testClass.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,11 +218,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				34E9D755281175AD00D393C4 /* AppDelegate.swift in Sources */,
-				34E9D77428118EA300D393C4 /* testViewController.swift in Sources */,
-				344896C62819596F0066A50B /* UIView_Extension.swift in Sources */,
+				34E9D77428118EA300D393C4 /* testClass.swift in Sources */,
 				3462010F28128C8100673F97 /* Movie.swift in Sources */,
 				3462010C28128B5900673F97 /* WebService.swift in Sources */,
-				346201182814FDC300673F97 /* UITableView_Extension.swift in Sources */,
+				346201182814FDC300673F97 /* Extension.swift in Sources */,
 				34E9D76C2811764600D393C4 /* TabBarViewController.swift in Sources */,
 				34E9D757281175AD00D393C4 /* SceneDelegate.swift in Sources */,
 				3462010628123D8A00673F97 /* SearchCell.swift in Sources */,

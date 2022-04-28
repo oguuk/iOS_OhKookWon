@@ -13,37 +13,32 @@ class SearchCell:UITableViewCell {
     
     private lazy var moviePoster: UIImageView = {
         let poster = UIImageView()
-        poster.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        poster.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        
         return poster
     }()
     
     private lazy var isInclude: UIImageView = {
         let star = UIImageView()
-        star.tintColor = .yellow
-        star.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        star.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
+        star.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        star.heightAnchor.constraint(equalToConstant: 30).isActive = true
         return star
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 15)
         return label
     }()
     
     private lazy var yearLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.alpha = 0.75
+        label.alpha = 0.8
         return label
     }()
     
-    lazy var typeLabel: UILabel = {
+    private lazy var typeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = .lightGray
         return label
     }()
@@ -53,20 +48,27 @@ class SearchCell:UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-                
+        
         let stack = UIStackView(arrangedSubviews: [titleLabel, yearLabel, typeLabel])
         stack.axis = .vertical
         stack.distribution = .fill
         
         addSubview(stack)
-        stack.centerY(inView: self,leftAnchor: leftAnchor,paddingLeft: 60)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60).isActive = true
+        stack.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         addSubview(moviePoster)
-        moviePoster.centerY(inView: self)
+        moviePoster.translatesAutoresizingMaskIntoConstraints = false
+        moviePoster.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        moviePoster.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        moviePoster.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
         addSubview(isInclude)
-        isInclude.centerY(inView: self,leftAnchor: leftAnchor, paddingLeft: 200)
-                
+        isInclude.translatesAutoresizingMaskIntoConstraints = false
+        isInclude.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        isInclude.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
+        
     }
     
     required init?(coder: NSCoder) {
@@ -75,7 +77,7 @@ class SearchCell:UITableViewCell {
     
     //MARK: -Cell configure
     
-    func configureCell(with info: JSON.Search.Movie,image:String = "star") {
+    func configureCell(with info: JSON.Search.Movie,image:String = "bookmark") {
         apicall.getImage(url: info.poster) { data, error in
             if let data = data {
                 DispatchQueue.main.async {
@@ -92,12 +94,12 @@ class SearchCell:UITableViewCell {
 }
 
 extension SearchCell {
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         if selected {
-            contentView.layer.borderWidth = 2
+            contentView.layer.borderWidth = 1
             contentView.layer.borderColor = UIColor.blue.cgColor
         } else {
             contentView.layer.borderWidth = 1

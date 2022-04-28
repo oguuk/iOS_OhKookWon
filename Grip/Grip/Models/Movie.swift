@@ -26,7 +26,7 @@ struct JSON {
             let imdbID: String
             let type: String
             let poster: String
-      
+            
             private enum CodingKeys: String, CodingKey {
                 case title = "Title"
                 case year = "Year"
@@ -41,18 +41,18 @@ struct JSON {
 }
 
 /*
-{
-"Search": [
-{
-"Title": String,
-"Year": String,
-"imdbID": String,
-"Type": String,
-"Poster": String(URL)
-},
-...
-],
-"totalResults": Int, // 검색 결과 전체 개수, 현재까지 받아온 개수와 비교하여 다음 페이지 호출
-"Response": Bool
-}
+ {
+ "Search": [
+ {
+ "Title": String,
+ "Year": String,
+ "imdbID": String,
+ "Type": String,
+ "Poster": String(URL)
+ },
+ ...
+ ],
+ "totalResults": Int, // 검색 결과 전체 개수, 현재까지 받아온 개수와 비교하여 다음 페이지 호출
+ "Response": Bool
+ }
  */

@@ -13,12 +13,12 @@ class FavoriteViewController: UIViewController {
     
     //MARK: -Propertie
     private let tableView = UITableView()
-    static var favoriteMovieForDeduplication = Set<JSON.Search.Movie>()
+    //    static var favoriteMovieForDeduplication = Set<JSON.Search.Movie>()
     static var movies = [JSON.Search.Movie]()
     
     //MARK: -LifeCycle
     override func viewWillAppear(_ animated: Bool) {
-        FavoriteViewController.movies = Array(FavoriteViewController.favoriteMovieForDeduplication)
+        //        FavoriteViewController.movies = Array(FavoriteViewController.favoriteMovieForDeduplication)
         configure()
     }
     
@@ -63,33 +63,23 @@ extension FavoriteViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SearchCell
-        cell.configureCell(with: FavoriteViewController.movies[indexPath.row],image: "star.fill")
+        cell.configureCell(with: FavoriteViewController.movies[indexPath.row],image: "")
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let alert = UIAlertController(title: "", message: "즐겨찾기를 삭제하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
-        
-        let okAction = UIAlertAction(title: "삭제", style: .default) { action in
-            
-            FavoriteViewController.favoriteMovieForDeduplication.remove(FavoriteViewController.movies[indexPath.row])
-            FavoriteViewController.movies = Array(FavoriteViewController.favoriteMovieForDeduplication)
+        cellClickedAndAlert("즐겨찾기를 삭제하시겠습니까?", indexPath.row, action: {
+            FavoriteViewController.movies.remove(at: indexPath.row)
             tableView.reloadData()
-        }
-        
-        let cancelAction = UIAlertAction(title: "취소", style: .default)
-        
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
+            //            FavoriteViewController.favoriteMovieForDeduplication.remove(FavoriteViewController.movies[indexPath.row])
+            //            FavoriteViewController.movies = Array(FavoriteViewController.favoriteMovieForDeduplication)
+        })
     }
 }
 
 
 //MARK: - Drag and Drop
-
 extension FavoriteViewController: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
@@ -104,16 +94,13 @@ extension FavoriteViewController: UITableViewDragDelegate {
     }
     
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
-}
-
-// MARK:- UITableView UITableViewDataSource
-extension FavoriteViewController {
     
-    // Row Editable true
+    //MARK: - Row Editable true
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    // Move Row Instance Method
+    
+    //MARK: - Move Row Instance Method
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let moveCell = FavoriteViewController.movies[sourceIndexPath.row]
         FavoriteViewController.movies.remove(at: sourceIndexPath.row)
