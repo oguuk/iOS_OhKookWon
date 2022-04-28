@@ -33,6 +33,9 @@ class FavoriteViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.tableView.dragInteractionEnabled = true
+        self.tableView.dragDelegate = self
+        
         tableView.register(SearchCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 120
@@ -51,7 +54,7 @@ class FavoriteViewController: UIViewController {
     }
 }
 
-//MARK: -TableViewDelegate and DataSource
+//MARK: - TableViewDelegate and DataSource
 extension FavoriteViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,5 +84,39 @@ extension FavoriteViewController: UITableViewDelegate,UITableViewDataSource {
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
+    }
+}
+
+
+//MARK: - Drag and Drop
+
+extension FavoriteViewController: UITableViewDragDelegate {
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+    
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        if session.localDragSession != nil {
+            return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+        }
+        return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
+    }
+    
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
+}
+
+// MARK:- UITableView UITableViewDataSource
+extension FavoriteViewController {
+    
+    // Row Editable true
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    // Move Row Instance Method
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let moveCell = FavoriteViewController.movies[sourceIndexPath.row]
+        FavoriteViewController.movies.remove(at: sourceIndexPath.row)
+        FavoriteViewController.movies.insert(moveCell, at: destinationIndexPath.row)
     }
 }
